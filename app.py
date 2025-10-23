@@ -35,12 +35,9 @@ st.markdown("""
     }
     
     .step-container {
-        background: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         margin-bottom: 2rem;
         border-left: 4px solid #8B5CF6;
+        padding-left: 1rem;
     }
     
     .step-header {
@@ -80,7 +77,7 @@ st.markdown("""
     
     .success-message {
         background-color: #D1FAE5;
-        color: #065F46;
+        color: #000000 !important;
         padding: 1rem;
         border-radius: 8px;
         border: 1px solid #A7F3D0;
@@ -111,25 +108,207 @@ st.markdown("""
     }
     
     .results-container {
-        background-color: #F8FAFC;
-        padding: 1.5rem;
-        border-radius: 8px;
-        border: 1px solid #E2E8F0;
         margin-top: 1rem;
     }
     
     .category-group {
-        background: white;
+        background: #F8FAFC;
         padding: 1rem;
-        border-radius: 6px;
-        border: 1px solid #E5E7EB;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
         margin-bottom: 1rem;
     }
     
+    .metric-card {
+        background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
+        margin: 0.5rem;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+    }
+    
+    .metric-label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 0;
+    }
+    
     .category-title {
-        color: #8B5CF6;
+        color: #000000 !important;
         font-weight: 600;
         margin-bottom: 0.5rem;
+    }
+    
+    /* Remover links e deixar texto branco */
+    a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    a:hover {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    /* Garantir que todos os textos sejam brancos */
+    .stMarkdown, .stText, .stWrite, .stSelectbox, .stTextInput, .stTextArea {
+        color: white !important;
+    }
+    
+    /* Remover links de todos os elementos Streamlit */
+    .stMarkdown a, .stText a, .stWrite a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    /* Fundo escuro para o texto branco */
+    .main .block-container {
+        background-color: #1a1a1a;
+        color: white;
+    }
+    
+    /* Garantir que todos os elementos tenham fundo escuro */
+    .stApp {
+        background-color: #1a1a1a;
+    }
+    
+    .stApp > div {
+        background-color: #1a1a1a;
+    }
+    
+    /* Forçar cor branca em todos os textos */
+    * {
+        color: white !important;
+    }
+    
+    /* Exceções para elementos que precisam manter suas cores */
+    .metric-card {
+        color: white !important;
+    }
+    
+    .step-number {
+        color: white !important;
+    }
+    
+    /* Remover todos os links do Streamlit */
+    .stApp a, .stApp a:visited, .stApp a:hover, .stApp a:active {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    /* Garantir que labels e textos sejam brancos */
+    .stLabel, .stText, .stMarkdown, .stWrite, .stSelectbox label, .stTextInput label {
+        color: white !important;
+    }
+    
+    /* Remover links de elementos específicos */
+    .stMarkdown a, .stText a, .stWrite a, .stSelectbox a, .stTextInput a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+    
+    /* Mensagens de sucesso com texto preto */
+    .stSuccess, .stSuccess * {
+        color: #000000 !important;
+    }
+    
+    /* Mensagens de info com texto preto */
+    .stInfo, .stInfo * {
+        color: #000000 !important;
+    }
+    
+    /* Textos dos exames em preto */
+    .exam-item, .exam-item * {
+        color: #000000 !important;
+    }
+    
+    .exam-detail, .exam-detail * {
+        color: #000000 !important;
+    }
+    
+    .comparison-item, .comparison-item * {
+        color: #000000 !important;
+    }
+    
+    .category-item, .category-item * {
+        color: #000000 !important;
+    }
+    
+    /* Forçar texto preto em divs específicos dos exames */
+    div[style*="background: #F8FAFC"], 
+    div[style*="background: white"], 
+    div[style*="background: #F0FDF4"], 
+    div[style*="background: #FEF2F2"] {
+        color: #000000 !important;
+    }
+    
+    div[style*="background: #F8FAFC"] *, 
+    div[style*="background: white"] *, 
+    div[style*="background: #F0FDF4"] *, 
+    div[style*="background: #FEF2F2"] * {
+        color: #000000 !important;
+    }
+    
+    /* Títulos das etapas em branco */
+    .step-title {
+        color: white !important;
+    }
+    
+    /* Títulos dos resultados em preto */
+    .results-container h3,
+    .results-container h4,
+    .results-container h5,
+    .results-container h6 {
+        color: #000000 !important;
+    }
+    
+    /* Títulos dentro de divs com fundo */
+    div[style*="background"] h3,
+    div[style*="background"] h4,
+    div[style*="background"] h5,
+    div[style*="background"] h6 {
+        color: #000000 !important;
+    }
+    
+    /* Forçar texto preto em seções específicas de resultado */
+    .result-section, .result-section * {
+        color: #000000 !important;
+    }
+    
+    /* Forçar texto preto em divs com fundo específico */
+    div[style*="background: #FEF2F2"] *,
+    div[style*="background: #D1FAE5"] *,
+    div[style*="background: #F8FAFC"] * {
+        color: #000000 !important;
+    }
+    
+    /* Forçar texto preto em todos os elementos dentro de divs de resultado */
+    div[style*="border-left: 4px solid #EF4444"] *,
+    div[style*="border-left: 4px solid #22C55E"] *,
+    div[style*="border-left: 4px solid #8B5CF6"] * {
+        color: #000000 !important;
+    }
+    
+    /* Regra mais específica para forçar texto preto */
+    .stApp .result-section,
+    .stApp .result-section *,
+    .stApp .result-section h4,
+    .stApp .result-section p,
+    .stApp .result-section strong,
+    .stApp .result-section span {
+        color: #000000 !important;
+    }
+    
+    /* Sobrescrever qualquer CSS do Streamlit */
+    div[class*="result-section"] * {
+        color: #000000 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -148,6 +327,25 @@ def main():
         st.session_state.access_token = None
     if "edital_id" not in st.session_state:
         st.session_state.edital_id = None
+    if "categorization_result" not in st.session_state:
+        st.session_state.categorization_result = None
+    
+    # Sidebar com controles
+    with st.sidebar:
+        st.header("🔧 Controles")
+        
+        if st.button("🔄 Reset All", type="secondary", help="Limpar todos os dados e começar novamente"):
+            # Limpar todos os dados da sessão
+            for key in ["access_token", "edital_id", "categorization_result"]:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.rerun()
+        
+        st.markdown("---")
+        st.subheader("📊 Status")
+        st.write(f"🔐 Token: {'✅ Ativo' if st.session_state.access_token else '❌ Não gerado'}")
+        st.write(f"📄 Edital: {'✅ Carregado' if st.session_state.edital_id else '❌ Não carregado'}")
+        st.write(f"🏥 Resultados: {'✅ Disponíveis' if st.session_state.categorization_result else '❌ Não disponíveis'}")
     
     # Etapa 1: Geração de Token
     st.markdown("""
@@ -252,18 +450,33 @@ def main():
         if uploaded_files:
             st.info(f"📁 {len(uploaded_files)} arquivo(s) selecionado(s)")
             
-            if st.button("Categorize Exams", type="primary"):
-                with st.spinner("Categorizing exams..."):
-                    result = api_client.categorize_exams(uploaded_files, st.session_state.edital_id)
-                
-                if result:
-                    display_categorization_results(result)
-                else:
-                    st.markdown("""
-                    <div class="error-message">
-                        ❌ Erro ao categorizar exames.
-                    </div>
-                    """, unsafe_allow_html=True)
+            col1, col2 = st.columns([1, 1])
+            
+            with col1:
+                if st.button("Categorize Exams", type="primary"):
+                    with st.spinner("Categorizing exams..."):
+                        result = api_client.categorize_exams(uploaded_files, st.session_state.edital_id)
+                    
+                    if result:
+                        st.session_state.categorization_result = result
+                        st.rerun()
+                    else:
+                        st.markdown("""
+                        <div class="error-message">
+                            ❌ Erro ao categorizar exames.
+                        </div>
+                        """, unsafe_allow_html=True)
+            
+            with col2:
+                if st.button("🔄 Reset Results", help="Limpar resultados e permitir novos uploads"):
+                    if "categorization_result" in st.session_state:
+                        del st.session_state.categorization_result
+                    st.rerun()
+        
+        # Mostrar resultados se existirem (apenas uma vez)
+        if "categorization_result" in st.session_state:
+            st.markdown("---")
+            display_categorization_results(st.session_state.categorization_result)
     else:
         st.info("🔒 Faça upload do edital primeiro para acessar esta funcionalidade.")
     
@@ -272,64 +485,181 @@ def main():
 def display_categorization_results(result):
     """Display categorization results in a formatted way"""
     st.markdown("""
-    <div class="results-container">
-        <h3>📊 Resultados da Categorização</h3>
+    <h3 style="color: #000000 !important;">📊 Resultados da Categorização</h3>
     """, unsafe_allow_html=True)
     
-    # Resumo dos resultados
+    # Verificar se result é um dicionário
+    if not isinstance(result, dict) or result is None:
+        return
+    
+    # Resumo dos resultados com cards estilizados
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("Exames Enviados", len(result.get("exames_enviados", [])))
+        exames_enviados = result.get("exames_enviados", [])
+        count = len(exames_enviados) if isinstance(exames_enviados, list) else 0
+        st.markdown(f"""
+        <div class="metric-card">
+            <p class="metric-value">{count}</p>
+            <p class="metric-label">Exames Enviados</p>
+        </div>
+        """, unsafe_allow_html=True)
     
     with col2:
-        st.metric("Status Comparação", result.get("comparacao", {}).get("status", "N/A"))
+        comparacao = result.get("comparacao", {})
+        status_comparacao = comparacao.get("status", "N/A") if isinstance(comparacao, dict) else "N/A"
+        st.markdown(f"""
+        <div class="metric-card">
+            <p class="metric-value">{status_comparacao}</p>
+            <p class="metric-label">Status Comparação</p>
+        </div>
+        """, unsafe_allow_html=True)
     
     with col3:
-        st.metric("Situação Incapacitante", result.get("situacao_incapacitante", {}).get("status", "N/A"))
+        situacao = result.get("situacao_incapacitante", {})
+        status_situacao = situacao.get("status", "N/A") if isinstance(situacao, dict) else "N/A"
+        st.markdown(f"""
+        <div class="metric-card">
+            <p class="metric-value">{status_situacao}</p>
+            <p class="metric-label">Situação Incapacitante</p>
+        </div>
+        """, unsafe_allow_html=True)
     
-    # Exames enviados
-    if result.get("exames_enviados"):
-        st.subheader("📋 Exames Enviados")
-        for exame in result["exames_enviados"]:
-            st.write(f"• {exame}")
-    
-    # Resultados da categorização
-    if result.get("categorization_results"):
-        st.subheader("🏷️ Categorias Encontradas")
+    # Exames enviados com melhor formatação
+    exames_enviados = result.get("exames_enviados", [])
+    if exames_enviados and isinstance(exames_enviados, list):
+        st.markdown("""
+        <h3 style="color: #000000 !important;">📋 Exames Enviados</h3>
+        """, unsafe_allow_html=True)
         
-        for categoria, itens in result["categorization_results"].items():
+        # Criar colunas para exibir exames em grid
+        cols = st.columns(3)
+        for i, exame in enumerate(exames_enviados):
+            with cols[i % 3]:
+                st.markdown(f"""
+                <div class="exam-item" style="background: #F8FAFC; padding: 0.5rem; border-radius: 6px; border-left: 3px solid #8B5CF6; margin: 0.25rem 0; color: #000000 !important;">
+                    📄 {exame}
+                </div>
+                """, unsafe_allow_html=True)
+    
+    # Resultados da categorização com melhor layout
+    categorization_results = result.get("categorization_results", {})
+    if categorization_results and isinstance(categorization_results, dict):
+        st.markdown("""
+        <h3 style="color: #000000 !important;">🏷️ Categorias Encontradas</h3>
+        """, unsafe_allow_html=True)
+        
+        for categoria, itens in categorization_results.items():
             st.markdown(f"""
             <div class="category-group">
-                <div class="category-title">{categoria}</div>
+                <div class="category-title" style="color: #000000 !important;">📁 {categoria}</div>
             """, unsafe_allow_html=True)
             
-            for item in itens:
-                nome_exame = item.get("nome_exame", [])
-                if isinstance(nome_exame, list):
-                    nome_exame = ", ".join(nome_exame)
-                st.write(f"**{item.get('name', 'N/A')}**: {nome_exame}")
+            if isinstance(itens, list):
+                for item in itens:
+                    if isinstance(item, dict):
+                        nome_exame = item.get("nome_exame", [])
+                        if isinstance(nome_exame, list):
+                            nome_exame = ", ".join(nome_exame)
+                        st.markdown(f"""
+                        <div class="category-item" style="background: white; padding: 0.75rem; border-radius: 4px; margin: 0.25rem 0; border: 1px solid #E5E7EB; color: #000000 !important;">
+                            <strong style="color: #000000 !important;">📄 {item.get('name', 'N/A')}</strong><br>
+                            <span style="color: #000000 !important; font-size: 0.9rem;">{nome_exame}</span>
+                        </div>
+                        """, unsafe_allow_html=True)
             
             st.markdown("</div>", unsafe_allow_html=True)
     
     # Comparação com exames obrigatórios
-    if result.get("comparacao"):
-        st.subheader("⚖️ Comparação com Exames Obrigatórios")
-        comparacao = result["comparacao"]
+    comparacao = result.get("comparacao", {})
+    if comparacao and isinstance(comparacao, dict):
+        st.markdown("""
+        <h3 style="color: #000000 !important;">⚖️ Comparação com Exames Obrigatórios</h3>
+        """, unsafe_allow_html=True)
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.write("**Exames Faltando:**")
-            for exame in comparacao.get("exames_faltando", []):
-                st.write(f"• ❌ {exame}")
+            st.markdown("**❌ Exames Faltando:**")
+            exames_faltando = comparacao.get("exames_faltando", [])
+            if isinstance(exames_faltando, list) and exames_faltando:
+                for exame in exames_faltando:
+                    st.markdown(f"""
+                    <div class="comparison-item" style="background: #FEF2F2; padding: 0.5rem; border-radius: 4px; border-left: 3px solid #EF4444; margin: 0.25rem 0; color: #000000 !important;">
+                        ❌ {exame}
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.markdown("✅ Nenhum exame faltando")
         
         with col2:
-            st.write("**Exames Extras:**")
-            for exame in comparacao.get("exames_extras", []):
-                st.write(f"• ➕ {exame}")
+            st.markdown("**➕ Exames Extras:**")
+            exames_extras = comparacao.get("exames_extras", [])
+            if isinstance(exames_extras, list) and exames_extras:
+                for exame in exames_extras:
+                    st.markdown(f"""
+                    <div class="comparison-item" style="background: #F0FDF4; padding: 0.5rem; border-radius: 4px; border-left: 3px solid #10B981; margin: 0.25rem 0; color: #000000 !important;">
+                        ➕ {exame}
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.markdown("✅ Nenhum exame extra")
     
-    st.markdown("</div>", unsafe_allow_html=True)
+    # Situação de incapacitante
+    situacao_incapacitante = result.get("situacao_incapacitante", {})
+    if situacao_incapacitante and isinstance(situacao_incapacitante, dict):
+        st.markdown("""
+        <h3 style="color: #000000 !important;">🚨 Situação de Incapacitante</h3>
+        """, unsafe_allow_html=True)
+        
+        # Inicializar variáveis
+        resultado = "N/A"
+        motivo = "N/A"
+        situacao_geral = "N/A"
+        tem_incapacitante = False
+        
+        # Navegar pela estrutura aninhada para encontrar incapacitante e motivo
+        for categoria, dados in situacao_incapacitante.items():
+            if isinstance(dados, dict):
+                # Extrair situação geral se disponível
+                if "situacao_geral" in dados:
+                    situacao_geral = dados["situacao_geral"]
+                
+                # Procurar nos detalhes por incapacitante e motivo
+                if "detalhes" in dados and isinstance(dados["detalhes"], list):
+                    for detalhe in dados["detalhes"]:
+                        if isinstance(detalhe, dict):
+                            if "incapacitante" in detalhe:
+                                resultado = detalhe["incapacitante"]
+                                tem_incapacitante = resultado == "Sim"
+                            if "motivo" in detalhe:
+                                motivo = detalhe["motivo"]
+        
+        # Exibir situação geral se disponível
+        if situacao_geral != "N/A":
+            st.markdown(f"""
+            <div class="result-section" style="background: #F8FAFC; padding: 1rem; border-radius: 8px; border-left: 4px solid #8B5CF6; margin: 1rem 0; color: #000000 !important;">
+                <h4 style="color: #000000 !important; margin: 0 0 0.5rem 0; font-weight: bold;">📋 Situação Geral</h4>
+                <p style="color: #000000 !important; margin: 0; font-weight: bold;">{situacao_geral}</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        if tem_incapacitante:
+            st.markdown(f"""
+            <div class="result-section" style="background: #FEF2F2; padding: 1rem; border-radius: 8px; border-left: 4px solid #EF4444; margin: 1rem 0; color: #000000 !important;">
+                <h4 style="color: #000000 !important; margin: 0 0 0.5rem 0; font-weight: bold;">⚠️ INCAPACITANTE DETECTADO</h4>
+                <p style="color: #000000 !important; margin: 0; font-weight: bold;"><strong style="color: #000000 !important;">Resultado:</strong> <span style="color: #000000 !important;">{resultado}</span></p>
+                <p style="color: #000000 !important; margin: 0; font-weight: bold;"><strong style="color: #000000 !important;">Motivo:</strong> <span style="color: #000000 !important;">{motivo}</span></p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"""
+            <div class="result-section" style="background: #D1FAE5; padding: 1rem; border-radius: 8px; border-left: 4px solid #22C55E; margin: 1rem 0; color: #000000 !important;">
+                <h4 style="color: #000000 !important; margin: 0 0 0.5rem 0; font-weight: bold;">✅ NENHUM INCAPACITANTE DETECTADO</h4>
+                <p style="color: #000000 !important; margin: 0; font-weight: bold;"><strong style="color: #000000 !important;">Resultado:</strong> <span style="color: #000000 !important;">{resultado}</span></p>
+                <p style="color: #000000 !important; margin: 0; font-weight: bold;"><strong style="color: #000000 !important;">Motivo:</strong> <span style="color: #000000 !important;">{motivo}</span></p>
+            </div>
+            """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()

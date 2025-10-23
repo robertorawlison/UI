@@ -67,6 +67,12 @@ class FadexAPIClient:
             return response.json()
         except requests.exceptions.RequestException as e:
             st.error(f"Erro ao categorizar exames: {str(e)}")
+            if hasattr(e, 'response') and e.response is not None:
+                try:
+                    error_detail = e.response.json()
+                    st.error(f"Detalhes do erro: {error_detail}")
+                except:
+                    st.error(f"Resposta do servidor: {e.response.text}")
             return {}
 
 # Global API client instance
