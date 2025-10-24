@@ -619,6 +619,7 @@ def display_categorization_results(result):
         tem_incapacitante = False
         
         # Navegar pela estrutura aninhada para encontrar incapacitante e motivo
+        categorias_com_incapacitante = []
         for categoria, dados in situacao_incapacitante.items():
             if isinstance(dados, dict):
                 # Extrair situação geral se disponível
@@ -629,6 +630,16 @@ def display_categorization_results(result):
                 if "detalhes" in dados and isinstance(dados["detalhes"], list):
                     for detalhe in dados["detalhes"]:
                         if isinstance(detalhe, dict):
+                            categoria_info = {
+                                "nome": categoria,
+                                "arquivo": detalhe.get("arquivo", "N/A"),
+                                "nome_exame": detalhe.get("nome_exame", []),
+                                "incapacitante": detalhe.get("incapacitante", "N/A"),
+                                "motivo": detalhe.get("motivo", "N/A")
+                            }
+                            categorias_com_incapacitante.append(categoria_info)
+                            
+                            # Manter compatibilidade com lógica existente
                             if "incapacitante" in detalhe:
                                 resultado = detalhe["incapacitante"]
                                 tem_incapacitante = resultado == "Sim"
@@ -643,6 +654,40 @@ def display_categorization_results(result):
                 <p style="color: #000000 !important; margin: 0; font-weight: bold;">{situacao_geral}</p>
             </div>
             """, unsafe_allow_html=True)
+        
+        # Exibir detalhes de cada categoria de exame
+        if categorias_com_incapacitante:
+            st.markdown("""
+            <h4 style="color: #000000 !important; margin: 1rem 0 0.5rem 0; font-weight: bold;">🔍 Detalhes por Categoria de Exame</h4>
+            """, unsafe_allow_html=True)
+            
+            for categoria_info in categorias_com_incapacitante:
+                # Determinar cor da borda baseada no resultado
+                if categoria_info["incapacitante"] == "Sim":
+                    border_color = "#EF4444"  # Vermelho para incapacitante
+                    bg_color = "#FEF2F2"
+                    icon = "⚠️"
+                else:
+                    border_color = "#22C55E"  # Verde para não incapacitante
+                    bg_color = "#D1FAE5"
+                    icon = "✅"
+                
+                # Converter lista de nomes de exames para string
+                nomes_exames = categoria_info["nome_exame"]
+                if isinstance(nomes_exames, list):
+                    nomes_exames_str = ", ".join(nomes_exames)
+                else:
+                    nomes_exames_str = str(nomes_exames)
+                
+                st.markdown(f"""
+                <div class="result-section" style="background: {bg_color}; padding: 1rem; border-radius: 8px; border-left: 4px solid {border_color}; margin: 0.5rem 0; color: #000000 !important;">
+                    <h5 style="color: #000000 !important; margin: 0 0 0.5rem 0; font-weight: bold;">{icon} {categoria_info['nome']}</h5>
+                    <p style="color: #000000 !important; margin: 0.25rem 0; font-weight: bold;"><strong style="color: #000000 !important;">Arquivo:</strong> <span style="color: #000000 !important;">{categoria_info['arquivo']}</span></p>
+                    <p style="color: #000000 !important; margin: 0.25rem 0; font-weight: bold;"><strong style="color: #000000 !important;">Exames:</strong> <span style="color: #000000 !important;">{nomes_exames_str}</span></p>
+                    <p style="color: #000000 !important; margin: 0.25rem 0; font-weight: bold;"><strong style="color: #000000 !important;">Incapacitante:</strong> <span style="color: #000000 !important;">{categoria_info['incapacitante']}</span></p>
+                    <p style="color: #000000 !important; margin: 0.25rem 0; font-weight: bold;"><strong style="color: #000000 !important;">Motivo:</strong> <span style="color: #000000 !important;">{categoria_info['motivo']}</span></p>
+                </div>
+                """, unsafe_allow_html=True)
         
         if tem_incapacitante:
             st.markdown(f"""
