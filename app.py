@@ -459,7 +459,7 @@ def main():
                     
                     if result:
                         st.session_state.categorization_result = result
-                        st.rerun()
+                        st.success("✅ Exames categorizados com sucesso!")
                     else:
                         st.markdown("""
                         <div class="error-message">
@@ -471,7 +471,7 @@ def main():
                 if st.button("🔄 Reset Results", help="Limpar resultados e permitir novos uploads"):
                     if "categorization_result" in st.session_state:
                         del st.session_state.categorization_result
-                    st.rerun()
+                    st.success("🔄 Resultados limpos com sucesso!")
         
         # Mostrar resultados se existirem (apenas uma vez)
         if "categorization_result" in st.session_state:
