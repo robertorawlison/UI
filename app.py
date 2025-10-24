@@ -336,7 +336,7 @@ def main():
         
         if st.button("🔄 Reset All", type="secondary", help="Limpar todos os dados e começar novamente"):
             # Limpar todos os dados da sessão
-            for key in ["access_token", "edital_id", "categorization_result"]:
+            for key in ["access_token", "edital_id", "categorization_result", "categorization_time"]:
                 if key in st.session_state:
                     del st.session_state[key]
             st.rerun()
@@ -454,11 +454,18 @@ def main():
             
             with col1:
                 if st.button("Categorize Exams", type="primary"):
+                    import time
+                    start_time = time.time()
+                    
                     with st.spinner("Categorizing exams..."):
                         result = api_client.categorize_exams(uploaded_files, st.session_state.edital_id)
                     
+                    end_time = time.time()
+                    execution_time = end_time - start_time
+                    
                     if result:
                         st.session_state.categorization_result = result
+                        st.session_state.categorization_time = execution_time
                         st.success("✅ Exames categorizados com sucesso!")
                     else:
                         st.markdown("""
@@ -471,6 +478,8 @@ def main():
                 if st.button("🔄 Reset Results", help="Limpar resultados e permitir novos uploads"):
                     if "categorization_result" in st.session_state:
                         del st.session_state.categorization_result
+                    if "categorization_time" in st.session_state:
+                        del st.session_state.categorization_time
                     st.success("🔄 Resultados limpos com sucesso!")
         
         # Mostrar resultados se existirem (apenas uma vez)
@@ -487,6 +496,24 @@ def display_categorization_results(result):
     st.markdown("""
     <h3 style="color: #000000 !important;">📊 Resultados da Categorização</h3>
     """, unsafe_allow_html=True)
+    
+    # Mostrar tempo de execução se disponível
+    if "categorization_time" in st.session_state:
+        execution_time = st.session_state.categorization_time
+        minutes = int(execution_time // 60)
+        seconds = execution_time % 60
+        
+        if minutes > 0:
+            time_str = f"{minutes}m {seconds:.1f}s"
+        else:
+            time_str = f"{seconds:.1f}s"
+        
+        st.markdown(f"""
+        <div class="result-section" style="background: #F0F9FF; padding: 1rem; border-radius: 8px; border-left: 4px solid #0EA5E9; margin: 1rem 0; color: #000000 !important;">
+            <h4 style="color: #000000 !important; margin: 0 0 0.5rem 0; font-weight: bold;">⏱️ Tempo de Execução</h4>
+            <p style="color: #000000 !important; margin: 0; font-weight: bold; font-size: 1.2rem;">{time_str}</p>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Verificar se result é um dicionário
     if not isinstance(result, dict) or result is None:
